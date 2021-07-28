@@ -9,15 +9,18 @@ load_dotenv()
 
 def main_ingest():
     folder_path = os.getenv('FOLDER_PATH')
-    files = os.listdir(folder_path)
+    files = [file for file in os.listdir(folder_path) if '.csv' in file]
     if files != 0:
+        df_status = pd.DataFrame(columns=['file','ingest','rows','date', 'error'])
+        row = 0
         for file_ in files:
             file_path = os.path.join(folder_path, file_)
-            df = rd.read_one_file(file_path) 
-            if type(df) == type(pd.DataFrame()):
+            df, status, error, date = rd.read_one_file(file_path)
+            if not df.empty:
                 db.df_to_sql(df, 'trips')
-                email.email_sender(df.shape[0])
-
+            df_status.loc[row] = [file_, status, df.shape[0], date, error]
+            row += 1
+        email.email_sender(df_status)
     else:
         print('Not files to be ingest')
         return None
