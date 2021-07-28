@@ -15,7 +15,7 @@ def main_ingest():
         row = 0
         for file_ in files:
             file_path = os.path.join(folder_path, file_)
-            df, status, error, date = rd.read_one_file(file_path)
+            df, status, error, date = rd.read_one_file(file_path, file_)
             if not df.empty:
                 db.df_to_sql(df, 'trips')
             df_status.loc[row] = [file_, status, df.shape[0], date, error]
