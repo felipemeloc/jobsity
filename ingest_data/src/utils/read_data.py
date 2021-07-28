@@ -14,6 +14,8 @@ def read_one_file(path):
         pd.DataFrame: Data Frame of the read file
     """
     df = pd.read_csv(path)
+    if df.empty:
+        return None
     df['datetime'] = pd.to_datetime(df['datetime'])
     for col in ['origin_coord', 'destination_coord']:
         df[col] = df[col].apply(clean_coord)
