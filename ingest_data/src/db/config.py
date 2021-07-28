@@ -21,7 +21,7 @@ def connect():
         "pool_timeout": 30,
         "pool_recycle": 1800,
     }
-
+    
     pool = sqlalchemy.create_engine(
         sqlalchemy.engine.url.URL(
             drivername="mysql+pymysql",
@@ -47,4 +47,5 @@ def df_to_sql(df,table):
     """
     pool = connect()
     df.to_sql(table,pool,if_exists='append', index=False)
+    print("Data actualizada")
     return None
