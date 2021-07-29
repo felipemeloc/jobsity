@@ -36,7 +36,7 @@ def read_one_file(path, file):
         name = today.strftime('%Y%m%d_%H%M%s')
         file = f'{name}.csv'
         backup_file = os.path.join(backup_path, file)
-        #shutil.copyfile(path, backup_file)
+        shutil.copyfile(path, backup_file)
         print(f"The input file moved to {backup_file}")
         os.remove(path)
         print(F"The {file} has been removed")
