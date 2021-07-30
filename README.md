@@ -218,6 +218,11 @@ Group by similar origin, destination, and time of day.
 <img src="graphs/hour_group.png" alt="drawing" width="600"/>
 
 ---
+## Diagram Google Cloud Platform (GCP) ingest process
+
+<img src="graphs/GCP_ingest_process.png" alt="drawing" width="600"/>
+
+---
 
 
 ## How to use
