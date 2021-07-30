@@ -2,11 +2,11 @@
 Jobsity Data Engineering Challenge
 
 
-This **README.md** should give you the tools to set up the python enviroment and run this code for test purposes.
+This **README.md** should give you the tools to set up the python environment and run this code for test purposes.
 
 This process was designed to extract, transform and load all the files from a specific folder to an instance of MySql inside of the **trips** TABLE.
 
-The **trips** TABLE have the following structue.
+The **trips** TABLE has the following structure.
 
 
 | id | region | origin_lon | origin_lat | destination_lon | destination_lat | datetime            | datasource | created_at          |
@@ -15,9 +15,9 @@ The **trips** TABLE have the following structue.
 ---
 
 
-After the ETL process the file is moved to a backup folder to keep track of all the files upload to the database. This files are renamed with the date of ingest. And send the status of the ingest process by email with the number of rows added in case of a successful ingest or and error message in case of an unsuccessful ingest.
+After the ETL process the file is moved to a backup folder to keep track of all the files uploaded to the database. These files are renamed with the date of ingest. And send the status of the ingest process by email with the number of rows added in case of a successful ingest or an error message in case of an unsuccessful ingest.
 
-Inside the Mysql instance exist two storage procedures: one for the automatic fill of **hour_group** TABLE that contain the group by similar origin, destination, and time of day. And another for the automatic fill of **weekly_avg_trips** that contain the weekly average number of trips for an area.
+Inside the Mysql instance exist two storage procedures: one for the automatic fill of **hour_group** TABLE that contains the group by similar origin, destination, and time of day. And another for the automatic fill of **weekly_avg_trips** that contain the weekly average number of trips for an area.
 
 
  
@@ -155,9 +155,9 @@ CREATE EVENT update_weekly_avg_trips
 ```
 ---
 
-### Python enviroment
+### Python environment
 
-Set up a virtual for all the python libraries. Please follow the following comands.
+Set up a virtual for all the python libraries. Please follow the following commands.
 ```python
 python3 -m venv ./venv
 ```
@@ -173,13 +173,13 @@ pip install -r requirements.txt
 
 ### Make .env file
 
-This file is use to store all the sensitive variables and the variables that change due to specific needs like the data base credentials, email sender password or email reciver adress. This file should be located inside of the **ingest_data** FOLDER with the following comands.
+This file is used to store all the sensitive variables and the variables that change due to specific needs like the database credentials, email sender password or email receiver address. This file should be located inside of the **ingest_data** FOLDER with the following commands.
 
 ```terminal
 touch .env
 ```
 
-The variables inside of this file shoul see like this.
+The variables inside of this file should see like this.
 
 ```terminal
 DB_USER = 'root'
@@ -198,15 +198,16 @@ The variables **DB_USER ; DB_PASSWORD : DB_NAME : DB_HOST** and **DB_PORT** are 
 
 The variables **FOLDER_PATH** and **FOLDER_BACKUP_PATH** are used to define the path for new files to be ingested and the path after the file is ingest.
 
-The variables **SENDER_EMAIL** and **EMAIL_PASSWORD** are use to send the email with the notification of the ingest process. You can use these for it.
+The variables **SENDER_EMAIL** and **EMAIL_PASSWORD** are used to send the email with the notification of the ingest process. You can use these for it.
 
 The variable **REC_EMAIL** is the email address that will receive the email with the status of the ingest process.
 
 ---
 
+
 ## How to use
 
-After the python enviroment is on and the file **.env** was created and completed with the necessary data. The proces can be triggered with the following comand.
+After the python environment is on and the file **.env** was created and completed with the necessary data. The process can be triggered with the following command.
 
 ```terminal
 python ingest_data/ingest_data.py
