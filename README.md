@@ -15,7 +15,7 @@ The **trips** TABLE have the following structue.
 ---
 
 
-After the ETL process the file is moved to a backup folder to keep track of all the files upload to the database. This files are renamed with the date of ingest.
+After the ETL process the file is moved to a backup folder to keep track of all the files upload to the database. This files are renamed with the date of ingest. And send the status of the ingest process by email with the number of rows added in case of a successful ingest or and error message in case of an unsuccessful ingest.
 
 Inside the Mysql instance exist two storage procedures: one for the automatic fill of **hour_group** TABLE that contain the group by similar origin, destination, and time of day. And another for the automatic fill of **weekly_avg_trips** that contain the weekly average number of trips for an area.
 
