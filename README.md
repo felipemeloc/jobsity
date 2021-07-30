@@ -203,6 +203,17 @@ The variables **SENDER_EMAIL** and **EMAIL_PASSWORD** are used to send the email
 The variable **REC_EMAIL** is the email address that will receive the email with the status of the ingest process.
 
 ---
+## Results and images
+
+Weekly average number of trips for an area.
+
+<img src="graphs/avg_trips_per_week.png" alt="drawing" width="600"/>
+
+Group by similar origin, destination, and time of day.
+
+<img src="graphs/hour_group.png" alt="drawing" width="600"/>
+
+---
 
 
 ## How to use
