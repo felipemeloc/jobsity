@@ -10,7 +10,8 @@ load_dotenv()
 def main_ingest():
     folder_path = os.getenv('FOLDER_PATH')
     files = [file for file in os.listdir(folder_path) if '.csv' in file]
-    if files != 0:
+    if len(files) != 0:
+        print("The files to be ingest ", files)
         df_status = pd.DataFrame(columns=['file','ingest','rows','date', 'error'])
         row = 0
         for file_ in files:

@@ -28,8 +28,8 @@ def read_one_file(path, file):
             df[col] = df[col].apply(clean_coord)
         df['origin_lon'] = df['origin_coord'].apply(lambda x: x.split(',')[0]).astype(float)
         df['origin_lat'] = df['origin_coord'].apply(lambda x: x.split(',')[1]).astype(float)
-        df['destination_lon'] = df['origin_coord'].apply(lambda x: x.split(',')[0]).astype(float)
-        df['destination_lat'] = df['origin_coord'].apply(lambda x: x.split(',')[1]).astype(float)
+        df['destination_lon'] = df['destination_coord'].apply(lambda x: x.split(',')[0]).astype(float)
+        df['destination_lat'] = df['destination_coord'].apply(lambda x: x.split(',')[1]).astype(float)
         df = df[['region','origin_lon','origin_lat','destination_lon','destination_lat','datetime','datasource']]
         today = pd.Timestamp.today()
         backup_path = os.getenv('FOLDER_BACKUP_PATH')

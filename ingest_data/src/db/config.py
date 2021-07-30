@@ -49,3 +49,16 @@ def df_to_sql(df,table):
     df.to_sql(table,pool,if_exists='append', index=False)
     print("Data actualizada")
     return None
+
+def sql_to_df(query):
+    """sql_to_df: This functions use an str input to make a query and get a DataFrame with the result
+
+    Args:
+        query (str): query for mysql data base
+
+    Returns:
+        pd.DataFrame: Data Frame with the query result
+    """
+    pool = connect()
+    data = pd.read_sql_query(query, pool)
+    return data
